@@ -12,12 +12,16 @@ def part1(data):
     position = 0
     depth = 0
     for i in data:
-        if i[0] == "f":
-            position += int(i[-1])
-        elif i[0] == "d":
-            depth += int(i[-1])
-        else:
-            depth -= int(i[-1])
+        match i[0]: 
+            case "f":
+                position += int(i[-1])
+            case "d":
+                depth += int(i[-1])
+            case "u":
+                depth -= int(i[-1])
+            case _:
+                print("There is an error in the input")
+                return
 
     return position * depth
 
@@ -29,14 +33,18 @@ def part2(data):
     depth = 0
 
     for i in data:
-        if i[0] == "f":
-            position += int(i[-1])
-            depth += aim * int(i[-1])
-        elif i[0] == "d":
-            aim += int(i[-1])
-        else:
-            aim -= int(i[-1])
-
+        match i[0]:
+            case "f":
+                position += int(i[-1])
+                depth += aim * int(i[-1])
+            case "d":
+                aim += int(i[-1])
+            case "u":
+                aim -= int(i[-1])
+            case _:
+                print("There is an error in the input")
+                return
+                
     return position * depth
 
 
